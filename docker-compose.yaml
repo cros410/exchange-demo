@@ -1,0 +1,27 @@
+version: "3"
+services:
+  bcp-backend:
+    image: bcp-backend
+    container_name: bcp-backend
+    restart: unless-stopped
+    networks:
+      - bcp-mysql
+    ports:
+      - 8080:8080
+    environment:
+      - spring.datasource.url=jdbc:mysql://bcp-database:3306/bcp
+    depends_on:
+      - bcp-database
+  bcp-database:
+    image: mysql:5.7
+    container_name: bcp-database
+    restart: always
+    networks:
+      - bcp-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=bcp
+    ports:
+      - "3306:3306"
+networks:
+  bcp-mysql: 
