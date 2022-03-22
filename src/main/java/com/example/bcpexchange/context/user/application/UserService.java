@@ -29,6 +29,10 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
+    public User findByUsername(String username){
+        return userRepository.findByUsername(username);
+    }
+
     public Role saveRole(Role role) {
         return this.roleRepository.save(role);
     }

@@ -37,5 +37,4 @@ public class BcpExchangeApplication {
             userService.addRoleToUser("admin", "ADMIN_ROLE");
         };
     }
-
 }
